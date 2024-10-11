@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  /* background-color: rgba(226, 62, 33, 0.906); */
+  background-color: #1f1f1fbe;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 130px;
+  /* height: 300px; */
+  border-radius: 50%;
+  margin-top: 20px;
+  box-shadow: 0 0 40px rgba(255, 68, 0, 0.848);
+
+  /* Adding the animation for glowing pulse */
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(210, 69, 18, 0.751);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 68, 0, 1);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(215, 188, 35, 0.849);
+  }
+}
+
+.container {
+  margin-top: 220px;
+  width: 40%;
+  padding: 25px 50px;
+  /* height: 400px; */
+  background-color: rgb(229, 206, 202);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  gap: 10px;
+  box-shadow: 8px 8px 20px rgba(255, 77, 0, 0.792);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.f1 {
+  padding: 8px;
+  border-radius: 7px;
+  border-style: none;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: rgb(221, 78, 49);
+  cursor: pointer;
+  transition: background-color, font-weight 0.8s ease-in-out;
+  font-weight: bold;
+}
+
+button {
+  background-color: rgba(214, 86, 39, 0.917);
+  color: rgb(11, 11, 82);
+  font-size: 16px;
+}
