@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>expense tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>expense tracker</h1>
+      <form id="expense-form">
+        <input
+          type="text"
+          id="expense-name"
+          placeholder="expanse name"
+          required
+        />
+        <input
+          type="number"
+          id="expense-amount"
+          placeholder="expense amount"
+          required
+        />
+        <button type="submit">add expanse</button>
+      </form>
+      <h2>expenses</h2>
+      <ul id="expense-list">
+        <!-- expenses will be added dynamically here -->
+      </ul>
+      <div id="total">
+        <h3>total: ₹<span id="total-amount">0.00</span></h3>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #1f1f1f;
+  padding: 25px;
+  border-radius: 5%;
+  box-shadow: 3px 3px 5px rgb(99, 3, 3);
+}
+
+#expense-name,
+#expense-amount,
+button {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: blue;
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+button:hover {
+  background-color: navy;
+  transition: background-color 0.8s ease;
+}
+
+li {
+  list-style: lower-roman;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(44, 47, 49);
+  padding: 5px;
+  border-radius: 5px;
+}
+ul {
+  padding-inline-start: 0px;
+}
