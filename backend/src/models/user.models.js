@@ -1,8 +1,8 @@
-import mongoose, { schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
-const userSchema = new schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -29,12 +29,12 @@ const userSchema = new schema(
       type: String, //cloudnary url
       require: true,
     },
-    coverimage: {
+    coverImage: {
       type: String, //cloudnary url
     },
     watchhistry: [
       {
-        type: schema.type.objectId,
+        type: Schema.Types.ObjectId,
         ref: "video",
       },
     ],
@@ -52,35 +52,39 @@ const userSchema = new schema(
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.modified("password")) return next();
+  if (!this.isModified("password")) return next();
   this.password = bcrypt.hash(this.password, 10);
 
   next();
 });
 
-userSchema.methods.isPasswordCorrect=async function(password){
-   return await.bcrypt.compare(password,this.password)
-}
+userSchema.methods.isPasswordCorrect = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
-userSchema.methods.generateAccessToken= function(){
-    // short lived access token (jwt token)
-   return jwt.sign({
-        _id:this._id;
-        email:this.email;
-        username:this.username;
-        fullname:this.fullname
+userSchema.methods.generateAccessToken = function () {
+  // short lived access token (jwt token)
+  return jwt.sign(
+    {
+      _id: this._id,
+      email: this.email,
+      username: this.username,
+      fullname: this.fullname,
     },
-process.env.ACCESS_TOKEN_SECRET,
-{expiredIn:process.env.ACCESS_TOKEN_EXPIRY})
-}
-userSchema.methods.generateRefreshToken= function(){
-    // short lived access token (jwt token)
-   return jwt.sign({
-        _id:this._id;
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiredIn: process.env.ACCESS_TOKEN_EXPIRY }
+  );
+};
+userSchema.methods.generateRefreshToken = function () {
+  // short lived access token (jwt token)
+  return jwt.sign(
+    {
+      _id: this._id,
     },
-process.env.REFRESH_TOKEN_SECRET,
-{expiredIn:process.env.REFRESH_TOKEN_EXPIRY})
-}
+    process.env.REFRESH_TOKEN_SECRET,
+    { expiredIn: process.env.REFRESH_TOKEN_EXPIRY }
+  );
+};
 
-
-export const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+export default User;
